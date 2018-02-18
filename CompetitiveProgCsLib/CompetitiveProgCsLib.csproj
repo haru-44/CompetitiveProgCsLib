@@ -50,6 +50,7 @@
     <Compile Include="Utilities\DataStructure\SegmentTree.cs" />
     <Compile Include="Utilities\DataStructure\UnionFind.cs" />
     <Compile Include="Utilities\IntPoint.cs" />
+    <Compile Include="Utilities\Memorizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

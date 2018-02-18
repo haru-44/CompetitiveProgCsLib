@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\LongestCommonSubsequence.cs" />
     <Compile Include="MainProg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DataStructure\PriorityQueue.cs" />

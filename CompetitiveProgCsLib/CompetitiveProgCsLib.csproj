@@ -49,6 +49,7 @@
     <Compile Include="Utilities\DataStructure\PriorityQueue.cs" />
     <Compile Include="Utilities\DataStructure\SegmentTree.cs" />
     <Compile Include="Utilities\DataStructure\UnionFind.cs" />
+    <Compile Include="Utilities\IntPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

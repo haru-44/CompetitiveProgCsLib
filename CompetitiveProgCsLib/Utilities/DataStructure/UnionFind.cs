@@ -10,7 +10,7 @@ namespace CompetitiveProgCsLib.Utilities.DataStructure
 	/// union findを提供する
 	/// 入力は0-origin
 	/// </summary>
-	class UnionFind
+	public class UnionFind
 	{
 		#region member
 		private List<int> data;

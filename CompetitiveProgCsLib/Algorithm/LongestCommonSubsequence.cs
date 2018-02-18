@@ -8,7 +8,7 @@ namespace CompetitiveProgCsLib.Algorithm
 	/// 最長共通部分列問題を解く
 	/// </summary>
 	/// <typeparam name="T">要素の型</typeparam>
-	class LongestCommonSubsequence<T>
+	public class LongestCommonSubsequence<T>
 	{
 		#region member
 		private T[] array1, array2;

@@ -51,6 +51,7 @@
     <Compile Include="Utilities\DataStructure\UnionFind.cs" />
     <Compile Include="Utilities\IntPoint.cs" />
     <Compile Include="Utilities\Memorizer.cs" />
+    <Compile Include="Utilities\SquaresMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

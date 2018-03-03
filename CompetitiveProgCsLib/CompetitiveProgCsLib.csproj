@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\KnapsackProblem.cs" />
     <Compile Include="Algorithm\LongestCommonSubsequence.cs" />
     <Compile Include="MainProg.cs" />
     <Compile Include="Mathematics\ModuloOperation.cs" />

@@ -8,9 +8,14 @@ namespace CompetitiveProgCsLib
 {
 	class MainProg
 	{
-		static int In => int.Parse(Console.ReadLine());
-		static int[] Ins => Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
-		static void Out(bool b) => Console.WriteLine(b ? "Yes" : "No");
+		static string R => Console.ReadLine();
+		static int RI => int.Parse(R);
+		static double RD => double.Parse(R);
+		static int[] RIs => R.Split(' ').Select(int.Parse).ToArray();
+		static double[] RDs => R.Split(' ').Select(double.Parse).ToArray();
+		static void Out(object obj) => Console.WriteLine(obj);
+		static void Outb(bool b) => Out(b ? "Yes" : "No");
+		static void OutB(bool b) => Out(b ? "YES": "NO");
 
 		static void Main(string[] args)
 		{

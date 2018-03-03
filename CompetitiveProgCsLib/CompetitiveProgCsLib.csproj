@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Algorithm\LongestCommonSubsequence.cs" />
     <Compile Include="MainProg.cs" />
+    <Compile Include="Mathematics\ModuloOperation.cs" />
+    <Compile Include="Mathematics\NumberTheory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\DataStructure\PriorityQueue.cs" />
     <Compile Include="Utilities\DataStructure\SegmentTree.cs" />

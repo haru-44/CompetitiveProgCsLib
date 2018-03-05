@@ -116,28 +116,5 @@ namespace CompetitiveProgCsLib.Mathematics
 			if (n > 1) ans -= ans / n;
 			return ans;
 		}
-
-		/// <summary>
-		/// 順列を生成する
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="items"></param>
-		/// <returns></returns>
-		public static IEnumerable<IEnumerable<T>> EnumeratedPermutation<T>(IEnumerable<T> items)
-		{
-			if (items.Count() == 1)
-			{
-				yield return new T[] { items.First() };
-				yield break;
-			}
-			foreach (var item in items)
-			{
-				var leftside = new T[] { item };
-				foreach (var rightside in EnumeratedPermutation(items.Except(leftside)))
-				{
-					yield return leftside.Concat(rightside);
-				}
-			}
-		}
 	}
 }

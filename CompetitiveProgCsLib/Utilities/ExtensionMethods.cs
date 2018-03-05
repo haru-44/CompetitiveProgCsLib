@@ -18,5 +18,55 @@ namespace CompetitiveProgCsLib.Utilities
 		{
 			return items.GroupBy(s => s).Select(s => new { Item = s.Key, Count = s.Count() }).ToDictionary(g => g.Item, g => g.Count);
 		}
+
+		/// <summary>
+		/// 順列を生成する
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="items"></param>
+		/// <returns></returns>
+		public static IEnumerable<IEnumerable<T>> EnumeratedPermutation<T>(this IEnumerable<T> items)
+		{
+			if (items.Count() == 1)
+			{
+				yield return new T[] { items.First() };
+				yield break;
+			}
+			foreach (var item in items)
+			{
+				var leftside = new T[] { item };
+				foreach (var rightside in EnumeratedPermutation(items.Except(leftside)))
+				{
+					yield return leftside.Concat(rightside);
+				}
+			}
+		}
+
+		/// <summary>
+		/// 組合せを生成する
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="items"></param>
+		/// <param name="comb"></param>
+		/// <returns></returns>
+		public static IEnumerable<IEnumerable<T>> EnumeratedCombination<T>(this IEnumerable<T> items, int comb)
+		{
+			if (comb == 0)
+			{
+				yield return new T[] { };
+				yield break;
+			}
+			int pos = 1;
+			foreach (var item in items)
+			{
+				if (items.Count() - pos < comb - 1) continue;
+				var leftside = new T[] { item };
+				foreach (var rightside in EnumeratedCombination(items.Skip(pos), comb - 1))
+				{
+					yield return leftside.Concat(rightside);
+				}
+				pos++;
+			}
+		}
 	}
 }

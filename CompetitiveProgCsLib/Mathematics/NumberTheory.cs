@@ -76,11 +76,11 @@ namespace CompetitiveProgCsLib.Mathematics
 		{
 			var primes = Enumerable.Range(0, n + 1).Select(i => i).ToArray();
 			primes[1] = 0;
-			for (int i = 2; i * i < n; i++)
+			for (int i = 2; i * i <= n; i++)
 			{
 				if (primes[i] != 0)
 				{
-					for (int j = i * i; j < n; j += i) primes[j] = 0;
+					for (int j = i * i; j <= n; j += i) primes[j] = 0;
 				}
 			}
 			return primes;

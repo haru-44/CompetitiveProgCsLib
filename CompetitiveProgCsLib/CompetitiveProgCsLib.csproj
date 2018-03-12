@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Algorithm\KnapsackProblem.cs" />
     <Compile Include="Algorithm\LongestCommonSubsequence.cs" />
+    <Compile Include="Geometry\LineSegment.cs" />
+    <Compile Include="Geometry\Point.cs" />
+    <Compile Include="Geometry\Triangle.cs" />
     <Compile Include="MainProg.cs" />
     <Compile Include="Mathematics\ModuloOperation.cs" />
     <Compile Include="Mathematics\NumberTheory.cs" />

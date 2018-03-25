@@ -56,24 +56,36 @@ namespace CompetitiveProgCsLib.Utilities.DataStructure
 		#endregion
 
 		#region private method
-		private T evaluate(int a, int b, int k, int l, int r)
+		private T Evaluate(int leftIndex, int rightIndex, int k, int l, int r)
 		{
-			if (r <= a || b <= l) return identityElement;
-			if (a <= l && r <= b) return tree[k];
+			if (r <= leftIndex || rightIndex <= l) return identityElement;
+			if (leftIndex <= l && r <= rightIndex) return tree[k];
 			else
 			{
-				T val_l = this.evaluate(a, b, k * 2 + 1, l, (l + r) / 2);
-				T val_r = this.evaluate(a, b, k * 2 + 2, (l + r) / 2, r);
+				var val_l = Evaluate(leftIndex, rightIndex, k * 2 + 1, l, (l + r) / 2);
+				var val_r = Evaluate(leftIndex, rightIndex, k * 2 + 2, (l + r) / 2, r);
 				return associativeOperation.Invoke(val_l, val_r);
 			}
 		}
 		#endregion
 
 		#region constructor
+		/// <summary>
+		/// 長さnのセグメント木を作る
+		/// </summary>
+		/// <param name="n"></param>
+		/// <param name="operation"></param>
+		/// <param name="identity"></param>
 		public SegmentTree(int n, Func<T, T, T> operation, T identity = default(T)) : this((new T[n]).Select(x => x = identity).ToArray(), operation, identity)
 		{
 		}
 
+		/// <summary>
+		/// arrayのセグメント木を作る
+		/// </summary>
+		/// <param name="array"></param>
+		/// <param name="operation"></param>
+		/// <param name="identity"></param>
 		public SegmentTree(T[] array, Func<T, T, T> operation, T identity = default(T))
 		{
 			Length = array.Length;
@@ -82,10 +94,7 @@ namespace CompetitiveProgCsLib.Utilities.DataStructure
 			identityElement = identity;
 			tree = (new T[size * 2 - 1]).Select(x => x = identityElement).ToArray();
 			origin = tree.Length - size;
-			for (int i = 0; i < array.Length; i++)
-			{
-				this[i] = array[i];
-			}
+			for (int i = 0; i < array.Length; i++) this[i] = array[i];
 			for (int i = origin - 1; i >= 0; i--)
 			{
 				tree[i] = associativeOperation.Invoke(tree[i * 2 + 1], tree[i * 2 + 2]);
@@ -102,7 +111,7 @@ namespace CompetitiveProgCsLib.Utilities.DataStructure
 		public void Update(int index, T value)
 		{
 			this[index] = value;
-			int position = origin + index;
+			var position = origin + index;
 			while (position > 0)
 			{
 				position = (position - 1) / 2;
@@ -111,15 +120,23 @@ namespace CompetitiveProgCsLib.Utilities.DataStructure
 		}
 
 		/// <summary>
-		/// a &lt;= x &lt; b の区間において評価を行う
+		/// leftIndex &lt;= x &lt; rightIndex の区間において評価を行う
 		/// </summary>
-		/// <param name="a"></param>
-		/// <param name="b"></param>
+		/// <param name="leftIndex"></param>
+		/// <param name="rightIndex"></param>
 		/// <returns></returns>
-		public T Evaluate(int a, int b)
+		public T Evaluate(int leftIndex, int rightIndex)
 		{
-			var ret = evaluate(a, b, 0, 0, (tree.Length + 1) / 2);
-			return ret;
+			return Evaluate(leftIndex, rightIndex, 0, 0, (tree.Length + 1) / 2);
+		}
+
+		/// <summary>
+		/// 全区間において評価を行う
+		/// </summary>
+		/// <returns></returns>
+		public T Evaluate()
+		{
+			return Evaluate(0, Length);
 		}
 		#endregion
 	}

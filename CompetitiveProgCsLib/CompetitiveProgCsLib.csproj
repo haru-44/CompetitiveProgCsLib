@@ -48,6 +48,13 @@
     <Compile Include="Geometry\LineSegment.cs" />
     <Compile Include="Geometry\Point.cs" />
     <Compile Include="Geometry\Triangle.cs" />
+    <Compile Include="GraphProblem\Basic\Edge.cs" />
+    <Compile Include="GraphProblem\BipartiteGraphMatching.cs" />
+    <Compile Include="GraphProblem\BridgeAndBiconnected.cs" />
+    <Compile Include="GraphProblem\Basic\Graph.cs" />
+    <Compile Include="GraphProblem\Basic\ListGraphNonWeighted.cs" />
+    <Compile Include="GraphProblem\Basic\MatrixGraph.cs" />
+    <Compile Include="GraphProblem\MaximumFlow.cs" />
     <Compile Include="MainProg.cs" />
     <Compile Include="Mathematics\ModuloOperation.cs" />
     <Compile Include="Mathematics\NumberTheory.cs" />

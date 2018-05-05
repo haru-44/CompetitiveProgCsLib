@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CompetitiveProgCsLib.Utilities
@@ -67,6 +68,34 @@ namespace CompetitiveProgCsLib.Utilities
 				}
 				pos++;
 			}
+		}
+
+		/// <summary>
+		/// itemsの内、selector.Invoke(x)が最小の値となるxを返す
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="items"></param>
+		/// <param name="selector"></param>
+		/// <returns></returns>
+		public static T MinST<T>(this IEnumerable<T> items, Func<T, T> selector)
+		{
+			var array = items.Select(x => new { Item = x, Val = selector.Invoke(x) });
+			var min = array.Min(x => x.Val);
+			return array.Where(x => x.Val.Equals(min)).FirstOrDefault().Item;
+		}
+
+		/// <summary>
+		/// itemsの内、selector.Invoke(x)が最大の値となるxを返す
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="items"></param>
+		/// <param name="selector"></param>
+		/// <returns></returns>
+		public static T MaxST<T>(this IEnumerable<T> items, Func<T, T> selector)
+		{
+			var array = items.Select(x => new { Item = x, Val = selector.Invoke(x) });
+			var max = array.Max(x => x.Val);
+			return array.Where(x => x.Val.Equals(max)).FirstOrDefault().Item;
 		}
 	}
 }

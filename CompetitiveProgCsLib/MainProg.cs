@@ -14,11 +14,16 @@ namespace CompetitiveProgCsLib
 		static int[] RIs => R.Split(' ').Select(int.Parse).ToArray();
 		static double[] RDs => R.Split(' ').Select(double.Parse).ToArray();
 		static void Out(object obj) => Console.WriteLine(obj);
+		static void OutLine<T>(IEnumerable<T> obj, string separateChar) => Out(String.Join(separateChar, obj));
 		static void Outb(bool b) => Out(b ? "Yes" : "No");
-		static void OutB(bool b) => Out(b ? "YES": "NO");
+		static void OutB(bool b) => Out(b ? "YES" : "NO");
+		static bool IsIn(int y, int x, int h, int w) => 0 <= x && x < w && 0 <= y && y < h;
 
 		static void Main(string[] args)
 		{
 		}
+
+
+		
 	}
 }
